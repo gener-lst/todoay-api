@@ -13,7 +13,7 @@ import javax.mail.MessagingException;
 
 @Service
 @RequiredArgsConstructor
-public class MainVerificationService {
+public class MailVerificationService {
     private final JwtManager jwtManager;
     private final JavaMailSender mailSender;
 
@@ -36,6 +36,6 @@ public class MainVerificationService {
 //         io.jsonwebtoken.SignatureException – if the claimsJws JWS signature validation fails
 //         io.jsonwebtoken.ExpiredJwtException – if the specified JWT is a Claims JWT and the Claims has an expiration time before the time this method is invoked.
 //         IllegalArgumentException – if the claimsJws string is null or empty or only whitespace
-        Claims verify = jwtManager.verify(emailTokenDto.getEmailToken());
+        Claims verify = jwtManager.verifyEmailToken(emailTokenDto.getEmailToken());
     }
 }
