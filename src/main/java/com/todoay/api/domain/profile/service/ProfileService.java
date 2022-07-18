@@ -1,25 +1,33 @@
-package com.todoay.api.domain.profile.service;
-
-import com.todoay.api.domain.auth.dto.AuthProfileDto;
-import com.todoay.api.domain.profile.dto.ProfileSaveDto;
-import com.todoay.api.domain.profile.entity.Profile;
-import com.todoay.api.domain.profile.repository.ProfileRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-
-@Service
-@RequiredArgsConstructor
-public class ProfileService {
-
-    private final ProfileRepository profileRepository;
-
-    // profileService
-    // 프로필 저장
-    public Long save(AuthProfileDto authProfileDto) {
-        return profileRepository.save(authProfileDto.toProfileEntity()).getId();
-    }
-
-}
+//package com.todoay.api.domain.auth.Dto;
+//
+//import com.todoay.api.domain.auth.entity.Auth;
+//import com.todoay.api.domain.profile.entity.Profile;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+//public class AuthProfileDto {
+//    private String email;
+//    private String password;
+//    private String nickname;
+//    private String imgUrl;
+//    private String introMsg;
+//
+//    private String auth;
+//
+//    public Auth toAuthEntity() {
+//        return Auth.builder()
+//                .email(email)
+//                .password(password).build();
+//    }
+//
+//    public Profile toProfileEntity() {
+//        return Profile.builder()
+//                .nickname(nickname)
+//                .imgUrl(imgUrl)
+//                .introMsg(introMsg).build();
+//    }
+//}

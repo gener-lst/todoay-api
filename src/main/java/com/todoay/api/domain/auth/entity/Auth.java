@@ -1,5 +1,6 @@
 package com.todoay.api.domain.auth.entity;
 
+import com.todoay.api.domain.profile.entity.Profile;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,10 @@ public class Auth implements UserDetails {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToOne(mappedBy = "Auth", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_Id")
+    private Profile profile;
 
     @Builder  //이게 있으면 쉽게 객체 생성이 가능하다
     public Auth(String email, String password) {

@@ -12,8 +12,7 @@ import java.io.IOException;
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response,
-                         AuthenticationException authException) throws IOException {
+    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
         // 유효한 자젹증명을 제공하지 않고 접근시 401 ERROR
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
     }

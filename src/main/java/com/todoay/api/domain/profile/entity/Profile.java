@@ -1,16 +1,12 @@
 package com.todoay.api.domain.profile.entity;
 
 import com.todoay.api.domain.auth.entity.Auth;
-import com.todoay.api.domain.profile.dto.ProfileSaveDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Getter
@@ -29,7 +25,7 @@ public class Profile {
     private String introMsg;
 
     // Auth table의 PK 참조 (FK)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "Profile", fetch = FetchType.LAZY)
     @JoinColumn(name = "auth_Id")
     private Auth auth;
 

@@ -25,7 +25,7 @@ public class JwtManager {
 
     private final long EMAIL_TOKEN_EXPIRATION = 1000 * 60 * 5;
     private final long ACCESS_TOKEN_EXPIRATION = 1000 * 60 * 60 * 24; // 하루
-    private final long REFRESH_TOKEN_EXPIRATION = 1000 * 60 * 60 * 24 * 30; // 30일
+    private final long REFRESH_TOKEN_EXPIRATION = 1000L * 60 * 60 * 24 * 30; // 30일
     private static final Logger logger = LoggerFactory.getLogger(JwtManager.class);
 
     private JwtUserDetailsService jwtUserDetailsService;
@@ -34,11 +34,11 @@ public class JwtManager {
         loginKey = Base64.getEncoder().encodeToString(loginKey.getBytes());
     }
 
-    public TokenDto createLoginToken(Authentication authentication) {
+    public TokenDto createLoginToken(String email) {
         Date date = new Date();
 
         String accessToken =  Jwts.builder()
-                .setSubject(authentication.getName())
+                .setSubject(email)
                 .setIssuedAt(date)
                 .setExpiration(getDateAfter(ACCESS_TOKEN_EXPIRATION))
                 .signWith(SignatureAlgorithm.HS256 ,key)
@@ -54,7 +54,7 @@ public class JwtManager {
                 .grantType("bearer")
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .email(authentication.getName())
+                .email(email)
                 .build();
     }
 
