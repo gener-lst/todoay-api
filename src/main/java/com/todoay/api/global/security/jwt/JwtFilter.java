@@ -1,4 +1,4 @@
-package com.todoay.api.global.jwt;
+package com.todoay.api.global.security.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

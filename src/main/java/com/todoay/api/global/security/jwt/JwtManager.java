@@ -1,5 +1,6 @@
-package com.todoay.api.global.jwt;
+package com.todoay.api.global.security.jwt;
 
+import com.todoay.api.domain.auth.service.UserDetailsService;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
 
@@ -28,13 +28,13 @@ public class JwtManager {
     private final long REFRESH_TOKEN_EXPIRATION = 1000L * 60 * 60 * 24 * 30; // 30일
     private static final Logger logger = LoggerFactory.getLogger(JwtManager.class);
 
-    private JwtUserDetailsService jwtUserDetailsService;
+    private UserDetailsService jwtUserDetailsService;
 
     protected void init() {
         loginKey = Base64.getEncoder().encodeToString(loginKey.getBytes());
     }
 
-    public TokenDto createLoginToken(String email) {
+    public JwtDto createLoginToken(String email) {
         Date date = new Date();
 
         String accessToken =  Jwts.builder()
@@ -50,7 +50,7 @@ public class JwtManager {
                 .signWith(SignatureAlgorithm.HS256 ,key)
                 .compact();
 
-        return TokenDto.builder()
+        return JwtDto.builder()
                 .grantType("bearer")
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)

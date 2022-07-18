@@ -1,10 +1,11 @@
-package com.todoay.api.global.config;
+package com.todoay.api.global.security.configuration;
 
-import com.todoay.api.global.jwt.*;
+import com.todoay.api.global.security.jwt.JwtAuthenticationEntryPoint;
+import com.todoay.api.global.security.jwt.JwtManager;
+import com.todoay.api.global.security.jwt.JwtSecurityConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

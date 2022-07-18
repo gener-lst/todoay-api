@@ -1,5 +1,6 @@
-package com.todoay.api.global.jwt;
+package com.todoay.api.domain.refreshToken.repository;
 
+import com.todoay.api.domain.refreshToken.entity.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

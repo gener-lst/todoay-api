@@ -1,16 +1,15 @@
-package com.todoay.api.global.jwt;
+package com.todoay.api.domain.auth.service;
 
 
 import com.todoay.api.domain.auth.repository.AuthRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class JwtUserDetailsService implements UserDetailsService {
+public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
     private final AuthRepository authRepository;
 

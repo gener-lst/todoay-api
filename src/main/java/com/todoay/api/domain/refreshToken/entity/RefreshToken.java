@@ -1,4 +1,4 @@
-package com.todoay.api.global.jwt;
+package com.todoay.api.domain.refreshToken.entity;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -17,12 +17,9 @@ public class RefreshToken {
 
     private String refreshToken;
 
-    private String email;
-
     @Builder
-    public RefreshToken(String refreshToken, String email) {
+    public RefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
-        this.email = email;
     }
 
     public RefreshToken updateRefreshToken(String refreshToken) {

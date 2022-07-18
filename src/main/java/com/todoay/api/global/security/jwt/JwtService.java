@@ -1,5 +1,7 @@
-package com.todoay.api.global.jwt;
+package com.todoay.api.global.security.jwt;
 
+import com.todoay.api.domain.refreshToken.entity.RefreshToken;
+import com.todoay.api.domain.refreshToken.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ public class JwtService {
     private final JwtManager jwtManager;
     private final RefreshTokenRepository refreshTokenRepository;
 
-    public TokenDto saveRefreshToken(TokenDto tokenDto) {
+    public JwtDto saveRefreshToken(JwtDto tokenDto) {
         // accessToken에서 인증 정보 가져옴
         Authentication authentication = jwtManager.getAuthentication(tokenDto.getAccessToken());
 
@@ -29,7 +31,6 @@ public class JwtService {
         // refreshToken 저장
         refreshToken = RefreshToken.builder()
                 .refreshToken(tokenDto.getRefreshToken())
-                .email(tokenDto.getEmail())
                 .build();
 
         RefreshToken newRefreshToken = refreshToken.updateRefreshToken(tokenDto.getRefreshToken());

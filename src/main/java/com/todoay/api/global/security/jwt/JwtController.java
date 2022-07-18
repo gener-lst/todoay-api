@@ -1,4 +1,4 @@
-package com.todoay.api.global.jwt;
+package com.todoay.api.global.security.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ public class JwtController {
     private final JwtService jwtService;
 
     @PostMapping("/reissue")
-    public ResponseEntity<TokenDto> reissue(@RequestBody TokenDto tokenDto) {
+    public ResponseEntity<JwtDto> reissue(@RequestBody JwtDto tokenDto) {
         return ResponseEntity.ok(jwtService.saveRefreshToken(tokenDto));
     }
 }
