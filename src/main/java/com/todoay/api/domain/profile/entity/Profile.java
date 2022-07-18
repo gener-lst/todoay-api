@@ -25,7 +25,7 @@ public class Profile {
     private String introMsg;
 
     // Auth table의 PK 참조 (FK)
-    @OneToOne(mappedBy = "Profile", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "auth_Id")
     private Auth auth;
 
